@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<canvas id="myCanvas" width="1600" height="150"></canvas>
+
+<script>
+var canvas = document.getElementById('myCanvas');
+var ctx = canvas.getContext('2d');
+var raf;
+  
+var square = {
+  x: 10,
+  y: 10,
+  width: 50,
+  height: 50,
+  color: 'blue',
+  draw: function() {
+    ctx.beginPath();
+    ctx.rect(this.x,this.y,this.width, this.height);
+    ctx.closePath();
+    ctx.fillStyle = this.color;
+    ctx.fill();
+  }
+}
+
+function draw() {
+  ctx.clearRect(0,0, canvas.width, canvas.height);
+  square.draw();
+  square.x += 1;
+  if (square.x >= canvas.width) {
+    square.x = 0;
+  }
+  raf = window.requestAnimationFrame(draw);
+}
+
+canvas.addEventListener('click', function(e) {
+  raf = window.requestAnimationFrame(draw);
+});
+
+
+square.draw();
+</script>
+  
+</html>
