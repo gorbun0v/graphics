@@ -31,6 +31,6 @@ for i in range(width):
         blue = Average(pix, i, j, 2)
         draw.point((i, j), (red, green, blue))
 
-result.save('result', 'png')
+result.save('result.png', 'png')
 result.close()
 image.close()
